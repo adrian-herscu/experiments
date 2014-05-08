@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foo:contacts xmlns:foo="http://acme.com/foo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://acme.com/foo foo.xsd ">
+	<foo:contact>
+		<foo:name>Mr. Foo</foo:name>
+		<foo:phone>+972 12345567</foo:phone>
+	</foo:contact>
+	<foo:contact>
+		<foo:name>Mr. Bar</foo:name>
+		<foo:phone>+972 1225567</foo:phone>
+	</foo:contact>
+</foo:contacts>

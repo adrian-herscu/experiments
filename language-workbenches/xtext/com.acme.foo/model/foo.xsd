@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	xmlns:foo="http://acme.com/foo" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	ecore:nsPrefix="foo" ecore:package="com.acme.foo" targetNamespace="http://acme.com/foo"
+	elementFormDefault="qualified">
+
+	<xsd:element name="contacts" type="foo:Contacts" />
+
+	<xsd:complexType name="Contacts">
+		<xsd:sequence>
+			<xsd:element name="contact" type="foo:Contact" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Contact">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="phone" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

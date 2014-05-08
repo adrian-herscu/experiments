@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated foo -->
+      <package
+            uri="http://acme.com/foo"
+            class="com.acme.foo.FooPackage"
+            genModel="model/foo.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated foo -->
+      <parser
+            type="foo"
+            class="com.acme.foo.util.FooResourceFactoryImpl"/>
+   </extension>
+
+</plugin>
