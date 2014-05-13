@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Htmlconverter
+Bundle-SymbolicName: de.vogella.plugin.htmlconverter;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.core.resources;bundle-version="3.8.101",
+ org.eclipse.jdt.core;bundle-version="3.9.2",
+ org.eclipse.core.runtime;bundle-version="3.9.100",
+ org.eclipse.core.expressions;bundle-version="3.4.501",
+ org.eclipse.core.commands,
+ org.eclipse.jface,
+ org.eclipse.ui.workbench
