@@ -6,48 +6,48 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:com.acme.foo.dsl.ui.FooEditor"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
-            extensions="foo"
-            id="com.acme.foo.dsl.Main"
-            name="Main Editor">
+            extensions="mydsl"
+            id="org.xtext.example.mydsl.MyDsl"
+            name="MyDsl Editor">
         </editor>
     </extension>
     <extension
         point="org.eclipse.ui.handlers">
         <handler
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="com.acme.foo.dsl.Main.Editor.opened">
+                    definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="com.acme.foo.dsl.Main.validate">
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="org.xtext.example.mydsl.MyDsl.validate">
          <activeWhen>
             <reference
-                    definitionId="com.acme.foo.dsl.Main.Editor.opened">
+                    definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened">
             </reference>
          </activeWhen>
       	</handler>
       	<!-- copy qualified name -->
         <handler
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
             <activeWhen>
-				<reference definitionId="com.acme.foo.dsl.Main.Editor.opened" />
+				<reference definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened" />
             </activeWhen>
         </handler>
         <handler
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
             <activeWhen>
             	<and>
-            		<reference definitionId="com.acme.foo.dsl.Main.XtextEditor.opened" />
+            		<reference definitionId="org.xtext.example.mydsl.MyDsl.XtextEditor.opened" />
 	                <iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -56,22 +56,22 @@
         </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="com.acme.foo.dsl.Main.Editor.opened">
+        <definition id="org.xtext.example.mydsl.MyDsl.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="com.acme.foo.dsl.Main" 
+                        value="org.xtext.example.mydsl.MyDsl" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
         </definition>
-        <definition id="com.acme.foo.dsl.Main.XtextEditor.opened">
+        <definition id="org.xtext.example.mydsl.MyDsl.XtextEditor.opened">
             <and>
                 <reference definitionId="isXtextEditorActive"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="com.acme.foo.dsl.Main" 
+                        value="org.xtext.example.mydsl.MyDsl" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
@@ -80,33 +80,33 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="com.acme.foo.dsl.Main"
-            name="Main">
-            <keywordReference id="com.acme.foo.dsl.ui.keyword_Main"/>
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.xtext.example.mydsl.MyDsl"
+            name="MyDsl">
+            <keywordReference id="org.xtext.example.mydsl.ui.keyword_MyDsl"/>
         </page>
         <page
-            category="com.acme.foo.dsl.Main"
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="com.acme.foo.dsl.Main.coloring"
+            category="org.xtext.example.mydsl.MyDsl"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="org.xtext.example.mydsl.MyDsl.coloring"
             name="Syntax Coloring">
-            <keywordReference id="com.acme.foo.dsl.ui.keyword_Main"/>
+            <keywordReference id="org.xtext.example.mydsl.ui.keyword_MyDsl"/>
         </page>
         <page
-            category="com.acme.foo.dsl.Main"
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="com.acme.foo.dsl.Main.templates"
+            category="org.xtext.example.mydsl.MyDsl"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="org.xtext.example.mydsl.MyDsl.templates"
             name="Templates">
-            <keywordReference id="com.acme.foo.dsl.ui.keyword_Main"/>
+            <keywordReference id="org.xtext.example.mydsl.ui.keyword_MyDsl"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="com.acme.foo.dsl.Main"
-            name="Main">
-            <keywordReference id="com.acme.foo.dsl.ui.keyword_Main"/>
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.xtext.example.mydsl.MyDsl"
+            name="MyDsl">
+            <keywordReference id="org.xtext.example.mydsl.ui.keyword_MyDsl"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -116,14 +116,14 @@
     <extension
         point="org.eclipse.ui.keywords">
         <keyword
-            id="com.acme.foo.dsl.ui.keyword_Main"
-            label="Main"/>
+            id="org.xtext.example.mydsl.ui.keyword_MyDsl"
+            label="MyDsl"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="com.acme.foo.dsl.Main.validate"
+            id="org.xtext.example.mydsl.MyDsl.validate"
             name="Validate">
       </command>
       <!-- copy qualified name -->
@@ -139,22 +139,17 @@
             description="Copy the qualified name for the selected element"
             name="Copy Qualified Name">
       </command>
-      <command
-            defaultHandler="com.acme.foo.dsl.ui.Hello"
-            id="com.acme.foo.dsl.ui.Hello"
-            name="Hello">
-      </command>
     </extension>
     <extension point="org.eclipse.ui.menus">
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="com.acme.foo.dsl.Main.validate"
+                 commandId="org.xtext.example.mydsl.MyDsl.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="com.acme.foo.dsl.Main.Editor.opened">
+                    definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -164,7 +159,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
          		style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="com.acme.foo.dsl.Main.Editor.opened" />
+                	<reference definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -172,7 +167,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
             	style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="com.acme.foo.dsl.Main.Editor.opened" />
+                	<reference definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -181,7 +176,7 @@
 				style="push" tooltip="Copy Qualified Name">
          		<visibleWhen checkEnabled="false">
 	            	<and>
-	            		<reference definitionId="com.acme.foo.dsl.Main.XtextEditor.opened" />
+	            		<reference definitionId="org.xtext.example.mydsl.MyDsl.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -189,32 +184,12 @@
 				</visibleWhen>
 			</command>
          </menuContribution>
-         <menuContribution
-               allPopups="false"
-               locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
-            <command
-                  commandId="com.acme.foo.dsl.ui.Hello"
-                  id="com.acme.foo.dsl.ui.Hello"
-                  mnemonic="S">
- 
-                    <visibleWhen>
-				           <with variable="activeMenuSelection">
-				            <iterate
-				                 ifEmpty="false">
-				             <adapt type="org.eclipse.core.resources.IResource">
-				               <test property="org.eclipse.core.resources.name" value="*.foo" />
-				             </adapt>
-				            </iterate>
-				           </with>
-         			</visibleWhen>
-            </command>
-         </menuContribution>
     </extension>
     <extension point="org.eclipse.ui.menus">
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="com.acme.foo.dsl.Main.Editor.opened">
+                	<reference definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -222,18 +197,14 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 	    <handler
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="com.acme.foo.dsl.Main.Editor.opened">
+                    definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
-	    <handler
-	        class="com.acme.foo.dsl.ui.Hello"
-	        commandId="com.acme.foo.dsl.ui.Hello">
-	    </handler>
     </extension>   
 
 <!-- adding resource factories -->
@@ -241,36 +212,36 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="foo">
+			class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="mydsl">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="foo">
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            uriExtension="mydsl">
         </resourceServiceProvider>
     </extension>
 
 
-	<!-- marker definitions for com.acme.foo.dsl.Main -->
+	<!-- marker definitions for org.xtext.example.mydsl.MyDsl -->
 	<extension
-	        id="main.check.fast"
-	        name="Main Problem"
+	        id="mydsl.check.fast"
+	        name="MyDsl Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.fast"/>
 	    <persistent value="true"/>
 	</extension>
 	<extension
-	        id="main.check.normal"
-	        name="Main Problem"
+	        id="mydsl.check.normal"
+	        name="MyDsl Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.normal"/>
 	    <persistent value="true"/>
 	</extension>
 	<extension
-	        id="main.check.expensive"
-	        name="Main Problem"
+	        id="mydsl.check.expensive"
+	        name="MyDsl Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.expensive"/>
 	    <persistent value="true"/>
@@ -279,27 +250,27 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
       </participant>
    </extension>
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            category="com.acme.foo.dsl.Main"
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="com.acme.foo.dsl.Main.compiler.preferencePage"
+            category="org.xtext.example.mydsl.MyDsl"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.xtext.example.mydsl.MyDsl.compiler.preferencePage"
             name="Compiler">
-            <keywordReference id="com.acme.foo.dsl.ui.keyword_Main"/>
+            <keywordReference id="org.xtext.example.mydsl.ui.keyword_MyDsl"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            category="com.acme.foo.dsl.Main"
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="com.acme.foo.dsl.Main.compiler.propertyPage"
+            category="org.xtext.example.mydsl.MyDsl"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.xtext.example.mydsl.MyDsl.compiler.propertyPage"
             name="Compiler">
-            <keywordReference id="com.acme.foo.dsl.ui.keyword_Main"/>
+            <keywordReference id="org.xtext.example.mydsl.ui.keyword_MyDsl"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -311,11 +282,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="com.acme.foo.dsl.Main.Editor.opened">
+					definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -335,33 +306,33 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="com.acme.foo.dsl.Main.Editor.opened"/>
+					<reference definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-    <!-- quickfix marker resolution generator for com.acme.foo.dsl.Main -->
+    <!-- quickfix marker resolution generator for org.xtext.example.mydsl.MyDsl -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="com.acme.foo.dsl.ui.main.check.fast">
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.xtext.example.mydsl.ui.mydsl.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="com.acme.foo.dsl.ui.main.check.normal">
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.xtext.example.mydsl.ui.mydsl.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="com.acme.foo.dsl.ui.main.check.expensive">
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.xtext.example.mydsl.ui.mydsl.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -371,11 +342,11 @@
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="com.acme.foo.dsl.Main.Editor.opened">
+					definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -387,7 +358,7 @@
                style="push">
             <visibleWhen checkEnabled="false">
                <reference
-                     definitionId="com.acme.foo.dsl.Main.Editor.opened">
+                     definitionId="org.xtext.example.mydsl.MyDsl.Editor.opened">
                </reference>
             </visibleWhen>
          </command>
@@ -395,30 +366,30 @@
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
 	    <page
-	        category="com.acme.foo.dsl.Main"
-	        class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="com.acme.foo.dsl.Main.refactoring"
+	        category="org.xtext.example.mydsl.MyDsl"
+	        class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="org.xtext.example.mydsl.MyDsl.refactoring"
 	        name="Refactoring">
-	        <keywordReference id="com.acme.foo.dsl.ui.keyword_Main"/>
+	        <keywordReference id="org.xtext.example.mydsl.ui.keyword_MyDsl"/>
 	    </page>
 	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="com.acme.foo.dsl.Main.compare.contentViewers"
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="foo">
+    <viewer id="org.xtext.example.mydsl.MyDsl.compare.contentViewers"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="mydsl">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="com.acme.foo.dsl.Main.compare.contentMergeViewers"
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="foo" label="Main Compare">
+    <viewer id="org.xtext.example.mydsl.MyDsl.compare.contentMergeViewers"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="mydsl" label="MyDsl Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="com.acme.foo.dsl.Main.editors.documentProviders"
-            class="com.acme.foo.dsl.ui.MainExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="foo">
+    <provider id="org.xtext.example.mydsl.MyDsl.editors.documentProviders"
+            class="org.xtext.example.mydsl.ui.MyDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+            extensions="mydsl">
     </provider>
   </extension>
 
