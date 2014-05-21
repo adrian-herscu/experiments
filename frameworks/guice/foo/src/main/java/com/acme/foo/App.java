@@ -1,13 +1,21 @@
 package com.acme.foo;
 
+import com.google.inject.Guice;
+
 /**
  * Hello world!
- *
+ * 
  */
-public class App 
+public class App
 {
-    public static void main( String[] args )
+    final FooService foo;
+    
+    App(FooService foo) {
+        this.foo = foo;
+    }
+
+    public static void main(String[] args)
     {
-        System.out.println( "Hello World!" );
+        new App(Guice.createInjector(new AppModule()).getInstance(FooService.class)).foo.doSomething();
     }
 }
