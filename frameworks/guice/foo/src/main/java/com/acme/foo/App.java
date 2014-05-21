@@ -1,5 +1,6 @@
 package com.acme.foo;
 
+import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 
 /**
@@ -7,15 +8,18 @@ import com.google.inject.Guice;
  * 
  */
 public class App
+        extends AbstractModule
 {
-    final FooService foo;
-    
-    App(FooService foo) {
-        this.foo = foo;
+    @Override
+    protected void configure() {
+        bind(FooService.class).to(FooServiceImpl.class);
+        bind(BarService.class).to(BarServiceImpl.class);
     }
 
     public static void main(String[] args)
     {
-        new App(Guice.createInjector(new AppModule()).getInstance(FooService.class)).foo.doSomething();
+        final FooService foo = Guice
+                .createInjector(new App()).getInstance(FooService.class);
+        foo.doSomething();
     }
 }
