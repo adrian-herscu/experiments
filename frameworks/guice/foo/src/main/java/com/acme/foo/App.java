@@ -4,6 +4,7 @@ import javax.inject.Named;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
+import com.google.inject.Provides;
 import com.google.inject.name.Names;
 
 /**
@@ -20,6 +21,13 @@ class App
         bind(FooService.class).to(FooServiceImpl.class);
         // NOTE: Default binding supplied by ImplementsBy on the interface
         // bind(BarService.class).to(BarServiceImpl.class);
+    }
+
+    @Provides
+    ConfigurableBarService provideTransactionLog() {
+        ConfigurableBarServiceImpl bar = new ConfigurableBarServiceImpl("a message");
+        bar.value = "a value";
+        return bar;
     }
 
     public static void main(String[] args)
