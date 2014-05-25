@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Calculator</title>
+</head>
+<body>
+	<form name="calculator" action="javascript:void(0)">
+		<table>
+			<tr>
+				<td colspan="4"><input name="display" type="text" value=""></td>
+			</tr>
+			<tr>
+				<td><button id="_7" onclick='calculator.display.value+="7"'>7</button></td>
+				<td><button id="_8" onclick='calculator.display.value+="8"'>8</button></td>
+				<td><button id="_9" onclick='calculator.display.value+="9"'>9</button></td>
+				<td><button id="_divide" onclick='calculator.display.value+="/"'>/</button></td>
+			</tr>
+			<tr>
+				<td><button id="_4" onclick='calculator.display.value+="4"'>4</button></td>
+				<td><button id="_5" onclick='calculator.display.value+="5"'>5</button></td>
+				<td><button id="_6" onclick='calculator.display.value+="6"'>6</button></td>
+				<td><button id="_multiply" onclick='calculator.display.value+="*"'>*</button></td>
+			</tr>
+			<tr>
+				<td><button id="_1" onclick='calculator.display.value+="1"'>1</button></td>
+				<td><button id="_2" onclick='calculator.display.value+="2"'>2</button></td>
+				<td><button id="_3" onclick='calculator.display.value+="3"'>3</button></td>
+				<td><button id="_substract" onclick='calculator.display.value+="-"'>-</button></td>
+			</tr>
+			<tr>
+				<td><button id="_0" onclick='calculator.display.value+="0"'>0</button></td>
+				<td><button id="_clear" onclick='calculator.display.value=""'>C</button></td>
+				<td><button id="_equal"
+						onclick='calculator.display.value=eval(calculator.display.value)'>=</button></td>
+				<td><button id="_add" onclick='calculator.display.value+="+"'>+</button></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

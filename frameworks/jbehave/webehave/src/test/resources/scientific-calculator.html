@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://www.dematte.at/CalcSS3/ -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Calc SS3</title>
+<meta name="Description"
+   content="Scientific/simple JavaScript calculator, CSS3 remake of iPhone™ calculator.">
+<meta name="Keywords"
+   content="Scientific, calculator, Calc, javaScript, mathematics, realtime, demo, download, application, util, plugin, program, programming, skin">
+<meta name="author" content="Peter Dematté">
+<link rel="stylesheet" type="text/css" href="calc.css">
+<link rel="shortcut icon"
+   href="data:image/ico;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAABMLAAATCwAAAAAAAAAAAAAxNzxiHB4g3hodIegbHSLkGx0i5BsdIuQcHR/kGxwd5AslXuUHKn7lCSp25QkqduUJKnblCSt26Qgpdd8eMmRmICQo5B4hJv8fIib/HSAl/x0gJf8eISb/ICIl/x4hIv8OK2f/CTOK/wAoff8AInr/ACJ6/wIqfv8JMoP/CzJ95icqL+cnKzD/IiYs/xoeJf8aHiX/HiIo/ygrLf8mKSr/ETN0/wc5lv8wV57/RGSn/0Zmp/8nT5n/CDeM/wo4j+gvMznkJiox/15mav+hqav/n6ep/36Gif8rLzL/LjEy/xY+gv8DQKL/bo2x/5ywxP+gtcP/U3ip/wQ9m/8NRJ7lOD5F5DM5QP9IT1X/YWlt/2Bpbf9VXGL/Nzo//zY6Pf8ZSZH/BUyz/3uXs/+wvcP/tMDB/12Brv8GSav/Dk+v5UJIUeRBR1D/PkRN/zk/SP85P0j/O0JL/0NHTf8/REf/HVGd/xBcyP8bW6//Hlur/x5bqv8ZWrP/Elu+/xNZvuVLVF7kSlJd/0pSXf9KUl3/SlJd/0pSXf9MUlr/SE5U/x1bsf8OZ+D/D2XX/w5l2f8OZdj/D2XX/xFm1f8SZdTlXGRu5Fpibf9aYm3/WmJt/1pibf9aYm3/XWNr/1leZv8vZq//InHV/yZuy/8mbsz/JW7L/yVuzP8lbsv/Jm3K5Xl+if57gor/e4KK/3uCiv97gor/e4KK/3uCiv97gor/e4KK/3uCiv97gor/e4KK/3uCiv97gor/e4KK/3uCiv9pdITkaXOC/2Rvf/9lcID/ZG9//2VwgP9qdIP/ZG59/2Zsdv9scnv/a3F7/2xzfP9sc3z/bHJ7/2xye/9uc3zkdICP5G56iv+Yo6v/h5Gf/4yYo/+SnKX/b3uL/297iv9teIf/dH+Q/216jP+OmaT/n6my/2Vzhf9zf5D/dIGQ5H6KneR1gZX/hZGc/9Xc3P/U3N3/fYqW/3uHmv95hJT/doCS/3qGmP+Un6r/v8fL/83V1/+QnKb/fIiZ/3yImeSHlKfkgI2i/46bqP/J0NH/ytHS/4qXp/+Fkqb/gIyf/36KnP+Cj6P/jJej/7jBxP/J0dL/hpKd/4SQov+Gk6fkjpyw54qXrP+apbH/h5Sh/5GbqP+Woa//jpuw/4mVqP+Gk6X/j52x/4SSqP+LmKX/laCr/32Mo/+PnbH/jpyw556qv+KQn7b/ipiv/4qZsP+Il6//i5qx/5KiuP+KmK7/iJaq/5Ggtf+Tobj/i5qw/4mYrv+Torn/j5+0/56qv+K/x9VgsLzM3K+7y+iwvMzksLzM5LC8zOSxvM3kqLPD5KSwv+SwvMzkrrvK5K67zOSuu8zkrrrK6LC8zNy/x9VgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==">
+</head>
+<body>
+   <div class="calc" id="calc" style="margin-left: -252px;">
+      <div class="display" style="line-height: 61px;">
+         <span style="font-size: 45px;">0,618552937870845</span>
+         <div class="rad" style="">Rad</div>
+         <div class="small">&gt;</div>
+         <div class="hold"></div>
+         <div class="ln">.,</div>
+         <a href="http://www.dematte.at/CalcSS3/help/help.html"
+            class="info">?</a>
+      </div>
+      <div class="left-side">
+         <div class="key" id="second">
+            <div class="key-inlay">2nd</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">(</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">)</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">%</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">1/x</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">
+               x<sup>2</sup>
+            </div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">
+               x<sup>3</sup>
+            </div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">
+               y<sup>x</sup>
+            </div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">x!</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">√</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">
+               <sup
+                  style="padding-bottom: 4px; display: block; position: absolute; left: 14px; top: 6px">x</sup><em
+                  style="font-weight: normal; font-size: 16px; padding-right: 2px">√</em>y
+            </div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">log</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">sin</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">cos</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">tan</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">ln</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">sinh</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">cosh</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">tanh</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">
+               e<sup>x</sup>
+            </div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">Deg</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">π</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">EE</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">Rand</div>
+         </div>
+      </div>
+      <div class="right-side">
+         <div class="key">
+            <div class="key-inlay">mc</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">m+</div>
+         </div>
+         <div class="key">
+            <div class="key-inlay">m-</div>
+         </div>
+         <div class="key active">
+            <div class="key-inlay">mr</div>
+         </div>
+         <div class="key brown">
+            <div class="key-inlay brown-inlay">AC</div>
+         </div>
+         <div class="key brown">
+            <div class="key-inlay brown-inlay">+/–</div>
+         </div>
+         <div class="key brown">
+            <div class="key-inlay f19 brown-inlay">÷</div>
+         </div>
+         <div class="key brown">
+            <div class="key-inlay f21 brown-inlay">×</div>
+         </div>
+         <div class="key black">
+            <div class="key-inlay black-inlay">7</div>
+         </div>
+         <div class="key black">
+            <div class="key-inlay black-inlay">8</div>
+         </div>
+         <div class="key black">
+            <div class="key-inlay black-inlay">9</div>
+         </div>
+         <div class="key brown">
+            <div class="key-inlay f18 brown-inlay">–</div>
+         </div>
+         <div class="key black">
+            <div class="key-inlay black-inlay">4</div>
+         </div>
+         <div class="key black">
+            <div class="key-inlay black-inlay">5</div>
+         </div>
+         <div class="key black">
+            <div class="key-inlay black-inlay">6</div>
+         </div>
+         <div class="key brown">
+            <div class="key-inlay f18 brown-inlay">+</div>
+         </div>
+         <div class="key black">
+            <div class="key-inlay black-inlay">1</div>
+         </div>
+         <div class="key black">
+            <div class="key-inlay black-inlay">2</div>
+         </div>
+         <div class="key black">
+            <div class="key-inlay black-inlay">3</div>
+         </div>
+         <div class="key blank">
+            <textarea></textarea>
+         </div>
+         <div class="key eq">
+            <div class="key-inlay f17 orange-inlay">
+               <div class="down">=</div>
+            </div>
+         </div>
+         <div class="key black" style="width: 110px;">
+            <div class="key-inlay black-inlay" style="text-align: left">
+               <span style="padding-left: 22px;">0</span>
+            </div>
+         </div>
+         <div class="key black">
+            <div class="key-inlay f21 black-inlay">.</div>
+         </div>
+      </div>
+      <div style="clear: both"></div>
+   </div>
+   <script type="text/javascript" src="calc.js"></script>
+</body>
+</html>

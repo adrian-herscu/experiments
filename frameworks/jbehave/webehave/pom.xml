@@ -1,0 +1,323 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+  <artifactId>webehave</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>JBehave to WebDriver bridge</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.dependency.plugin.version>2.8</maven.dependency.plugin.version>
+    <java.source>1.7</java.source>
+    <java.target>1.7</java.target>
+    <properties.maven.plugin.version>1.0-alpha-2</properties.maven.plugin.version>
+    <logback.classic.version>1.0.7</logback.classic.version>
+    <selenium.firefox.driver.version>2.39.0</selenium.firefox.driver.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>de.codecentric</groupId>
+      <artifactId>jbehave-junit-runner</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jbehave.web</groupId>
+      <artifactId>jbehave-web-selenium</artifactId>
+      <version>3.5.5</version>
+    </dependency>
+
+    <!-- NOTE: self-testing dependencies -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-firefox-driver</artifactId>
+      <version>${selenium.firefox.driver.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.classic.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>1.9.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.7.3</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.oval</groupId>
+      <artifactId>oval</artifactId>
+      <version>1.82</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mvel</groupId>
+      <artifactId>mvel2</artifactId>
+      <version>2.1.6.Final</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+      <testResource>
+        <directory>src/test/stories</directory>
+      </testResource>
+    </testResources>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.1</version>
+          <configuration>
+            <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
+            <source>${java.source}</source>
+            <target>${java.target}</target>
+          </configuration>
+        </plugin>
+
+        <!--This plugin's configuration is used to store Eclipse m2e settings 
+          only. It has no influence on the Maven build itself. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <versionRange>${maven.dependency.plugin.version}</versionRange>
+                    <goals>
+                      <goal>unpack</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>properties-maven-plugin</artifactId>
+                    <versionRange>${properties.maven.plugin.version}</versionRange>
+                    <goals>
+                      <goal>set-system-properties</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>${properties.maven.plugin.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>set-system-properties</goal>
+            </goals>
+            <configuration>
+              <properties>
+                <property>
+                  <name>logback.configurationFile</name>
+                  <value>logback.xml</value>
+                </property>
+              </properties>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>aspectj-maven-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>test-compile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <source>${java.source}</source>
+          <target>${java.target}</target>
+          <complianceLevel>1.7</complianceLevel>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jbehave</groupId>
+        <artifactId>jbehave-maven-plugin</artifactId>
+        <version>4.0-beta-4</version>
+
+        <dependencies>
+          <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <version>${selenium.firefox.driver.version}</version>
+          </dependency>
+
+          <!-- NOTE: it uses the configuration file defined by the logback.configurationFile 
+            system property; see the properties-maven-plugin above -->
+          <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.classic.version}</version>
+          </dependency>
+        </dependencies>
+
+        <executions>
+          <!-- ISSUE: this goal does not work; used the Maven dependency 
+            plugin instead, see below -->
+          <!-- execution><id>unpack-view-resources</id> <phase>generate-resources</phase> 
+            <configuration> <systemProperties> <property> <name>storyEncoding</name> 
+            <value>${project.build.sourceEncoding}</value> </property> </systemProperties> 
+            </configuration> <goals> <goal>unpack-view-resources</goal> </goals> </execution -->
+          <execution>
+            <id>run-scenarios</id>
+            <phase>integration-test</phase>
+
+            <configuration>
+              <scope>test</scope>
+              <includes>
+                <include>**/StoriesRunner.java</include>
+              </includes>
+              <metaFilters>
+                <!-- ISSUE: using +toplevel causes only the self-test.story 
+                  to executed. Using toplevel causes all stories to be included in the report, 
+                  even if those where not marked as toplevel . -->
+                <metaFilter>toplevel</metaFilter>
+              </metaFilters>
+              <ignoreFailureInStories>false</ignoreFailureInStories>
+              <ignoreFailureInView>false</ignoreFailureInView>
+            </configuration>
+
+            <goals>
+              <goal>run-stories-as-embeddables</goal>
+            </goals>
+          </execution>
+
+          <execution>
+            <id>map-stories</id>
+            <phase>integration-test</phase>
+
+            <configuration>
+              <scope>test</scope>
+              <includes>
+                <include>**/StoryMapsRunner.java</include>
+              </includes>
+              <metaFilters>
+                <metaFilter>+toplevel</metaFilter>
+              </metaFilters>
+            </configuration>
+
+            <goals>
+              <goal>map-stories-as-embeddables</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>${maven.dependency.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>unpack-jbehave-site-resources</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <overwriteReleases>false</overwriteReleases>
+              <overwriteSnapshots>true</overwriteSnapshots>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.jbehave.site</groupId>
+                  <artifactId>jbehave-site-resources</artifactId>
+                  <version>3.1.1</version>
+                  <type>zip</type>
+                  <outputDirectory>
+                    ${project.build.directory}/jbehave/view
+                  </outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+          <execution>
+            <id>unpack-jbehave-reports-resources</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <overwriteReleases>false</overwriteReleases>
+              <overwriteSnapshots>true</overwriteSnapshots>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.jbehave</groupId>
+                  <artifactId>jbehave-core</artifactId>
+                  <!-- NOTE: version should match that of the jbehave-core 
+                    referenced by the jbehave-web-selenium (currently 3.7.4) -->
+                  <version>3.7.4</version>
+                  <outputDirectory>
+                    ${project.build.directory}/jbehave/view
+                  </outputDirectory>
+                  <includes>
+                    **\/*.css,**\/*.ftl,**\/*.js
+                  </includes>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

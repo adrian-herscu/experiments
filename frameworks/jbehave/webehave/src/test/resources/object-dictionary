@@ -1,0 +1,35 @@
+# numeric keys
+0 = //button[@id='_0']
+1 = //button[@id='_1']
+2 = //button[@id='_2']
+3 = //button[@id='_3']
+4 = //button[@id='_4']
+5 = //button[@id='_5']
+6 = //button[@id='_6']
+7 = //button[@id='_7']
+8 = //button[@id='_8']
+9 = //button[@id='_9']
+
+# operator keys
+add = //button[@id='_add']
+multiply = //button[@id='_multiply']
+divide = //button[@id='_divide']
+substract = //button[@id='_substract']
+
+# operator key shortcuts
++ = //button[@id='_add']
+* = //button[@id='_multiply']
+/ = //button[@id='_divide']
+- = //button[@id='_substract']
+
+# auxiliary keys
+equal = //button[@id='_equal']
+clear = //button[@id='_clear']
+
+# the display
+display\u0020value = //input[@name='display']/@value
+
+# a test button
+test = //button[@id='test']
+alert\u0020ok = alert::ok
+alert\u0020text = alert::text
