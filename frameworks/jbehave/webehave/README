@@ -1,4 +1,5 @@
+Before running on your machine, you must update following lines in
+src/test/resources/value-dictionary file:
+
 'calculator\u0020page' = file:///C:\\Users\\herscu\\git\\experiments\\frameworks\\jbehave\\webehave\\src\\test\\resources\\calculator.html
 'test\u0020page' = file:///C:\\Users\\herscu\\git\\experiments\\frameworks\\jbehave\\webehave\\src\\test\\resources\\self-test.html
-'blank' =
-'ok' = ok
