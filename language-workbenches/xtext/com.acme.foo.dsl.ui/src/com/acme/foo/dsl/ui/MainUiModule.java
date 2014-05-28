@@ -12,4 +12,10 @@ public class MainUiModule extends com.acme.foo.dsl.ui.AbstractMainUiModule {
 	public MainUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
+	
+    // contributed by org.eclipse.xtext.ui.generator.ImplicitUiFragment
+    public Class<? extends org.eclipse.xtext.ui.editor.model.XtextDocumentProvider> bindXtextDocumentProvider() {
+        return FooDocumentProvider.class;
+    }
+
 }
